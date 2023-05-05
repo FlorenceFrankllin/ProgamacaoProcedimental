@@ -1,0 +1,1212 @@
+***************************************************************************VETORES**************************************************************************
+
+/*
+01.Faça um programa que possua um vetor denominado A que armazene 6 números inteiros.
+O programa deve executar os seguintes passos:
+a) Atribua os seguintes valores a esse vetor: 1, 0, 5, -2, -5, 7.
+b) Armazene em uma variável inteira (simples) a soma entre os valores das posições
+A[0], A[1] e A[5] do vetor e mostre na tela esta soma.
+c) Modifique o vetor na posição 4, atribuindo a esta posição o valor 100.
+d) Mostre na tela cada valor do vetor A, um em cada linha.
+*/
+
+#include <stdio.h>
+
+int main(void)
+{
+  int A[6] = {1, 0, 5, -2, -5, 7}; //Atribuir
+  int soma = A[0] + A[1] + A[5]; //Armazenar
+  printf("Soma: %d\n", soma);
+  A[4] = 100;  //Modificar o vetor 
+  for (int i = 0; i < 6; i++)
+  {
+    printf("%d\n", A[i]); //Mostrar na tela 
+  }
+  return 0;
+}
+
+
+/*
+02.Faça um programa que leia um vetor de 8 posições e, em seguida, leia também dois valores 
+X e Y quaisquer correspondentes a duas posições no vetor. Ao  final seu programa deverá 
+escrever a soma dos valores encontrados nas respectivas posições X e Y.
+*/
+#include <stdio.h>
+
+int main(void)
+{
+  int A[8]; //Numero de posições
+  int X, Y; // Dois vetores 
+  for (int i = 0; i < 8; i++)
+  {
+    printf("Digite o %dº valor: ", i + 1);
+    scanf("%d", &A[i]);
+  }
+  printf("Digite X: ");
+  scanf("%d", &X);
+  printf("Digite Y: ");
+  scanf("%d", &Y);
+  printf("Soma: %d\n", A[X] + A[Y]);
+  return 0;
+}
+
+
+
+/*
+03.Crie um programa que lê 6 valores inteiros e, em seguida, mostre na tela os valores lidos na 
+ordem inversa.
+*/
+#include <stdio.h>
+
+int main(void)
+{
+  int A[6]; //Lê 6 valores inteiros
+   for (int i = 0; i < 6; i++)
+  {
+    printf("Digite o %dº valor: ", i + 1);
+    scanf("%d", &A[i]);
+  }
+  for (int i = 5; i >= 0; i--)
+  {
+    printf("%d\n", A[i]); //Mostrar os valores 
+  }
+  return 0;
+}
+
+
+
+/*
+04.Fazer um programa para ler 5 valores e, em seguida, mostrar a posição onde se encontram 
+o maior e o menor valor.
+*/
+#include <stdio.h>
+
+int main(void)
+{
+  int A[5]; //Lê 5 valores 
+  int maior = 0;
+  int menor = 0;
+  for (int i = 0; i < 5; i++)
+  {
+    printf("Digite o %dº valor: ", i + 1);
+    scanf("%d", &A[i]);
+    if (A[i] > A[maior])
+    {
+      maior = i;
+    }
+    if (A[i] < A[menor])
+    {
+      menor = i;
+    }
+  }
+  printf("Maior: %d\n", maior);
+  printf("Menor: %d\n", menor);
+  return 0;
+}
+
+
+
+/*
+05.Faça um vetor de tamanho 50 preenchido com o seguinte valor: (i+5*i)%(i+1), sendo i 
+a posição do elemento no vetor. Em seguida imprima o vetor na tela.
+*/
+#include <stdio.h>
+
+int main(void)
+{
+  int A[50]; //Tamanho 50 
+  for (int i = 0; i < 50; i++)
+  {
+    A[i] = (i + 5 * i) % (i + 1);
+  }
+  for (int i = 0; i < 50; i++)
+  {
+    printf("%d\n", A[i]);
+  }
+  return 0;
+}
+
+
+/*
+06.Leia 10 números inteiros e armazene em um vetor. Em seguida escreva os elementos que 
+são primos e suas respectivas posições no vetor.
+*/
+#include <stdio.h>
+
+int main(void)
+{
+  int A[10]; //Lê 10 numeros inteiros
+  for (int i = 0; i < 10; i++)
+  {
+    printf("Digite o %dº valor: ", i + 1);
+    scanf("%d", &A[i]); //Armazena
+  }
+  for (int i = 0; i < 10; i++)
+  {
+    int primo = 1;
+    for (int j = 2; j < A[i]; j++)
+    {
+      if (A[i] % j == 0)
+      {
+        primo = 0;
+        break;
+      }
+    }
+    if (primo)
+    {
+      printf("Posição %d: %d\n", i, A[i]);
+    }
+  }
+  return 0;
+}
+
+
+/*
+07.Faça um programa que receba 6 números inteiros e mostre: 
+- Os números pares digitados; 
+- A soma dos números pares digitados; 
+- Os números ímpares digitados; 
+- A quantidade de números ímpares digitados;
+*/
+
+#include <stdio.h>
+
+int main(void)
+{
+  int A[6]; //Recebe 6 numeros 
+  for (int i = 0; i < 6; i++)
+  {
+    printf("Digite o %dº valor: ", i + 1); //Numeros Digitados
+    scanf("%d", &A[i]);
+  }
+  int soma_pares = 0;
+  int qtd_impares = 0;
+  for (int i = 0; i < 6; i++)
+  {
+    if (A[i] % 2 == 0)
+    {
+      printf("Par: %d\n", A[i]);
+      soma_pares += A[i]; //A soma dos numeros pares digitados
+    }
+    else
+    {
+      printf("Ímpar: %d\n", A[i]);
+      qtd_impares++; // Numeros impares digitados 
+    }
+  }
+  printf("Soma dos pares: %d\n", soma_pares);
+  printf("Quantidade de ímpares: %d\n", qtd_impares);
+  return 0;
+}
+
+
+/*
+08.Faça um programa para ler 10 números DIFERENTES a serem armazenados em um vetor. Os 
+dados deverão ser armazenados no vetor na ordem que forem sendo lidos, sendo que caso 
+o usuário digite um número que já foi digitado anteriormente, o programa deverá pedir para 
+ele digitar outro número. Note que cada valor digitado pelo usuário deve ser pesquisado no 
+vetor, verificando se ele existe entre os números que já foram fornecidos. Exibir na tela o 
+vetor final que foi digitado.
+*/
+#include <stdio.h>
+
+int main(void)
+{
+  int A[10]; // Lê 10 numeros 
+  for (int i = 0; i < 10; i++)
+  {
+    int valor;
+    printf("Digite o %dº valor: ", i + 1);
+    scanf("%d", &valor);
+    int existe = 0;
+    for (int j = 0; j < i; j++)
+    {
+      if (A[j] == valor) //Armazenar 
+      {
+        existe = 1;
+        break;
+      }
+    }
+    if (existe)
+    {
+      i--;
+      continue;
+    }
+    A[i] = valor;
+  }
+  for (int i = 0; i < 10; i++)
+  {
+    printf("%d\n", A[i]);//Vetor final
+  }
+  return 0;
+}
+
+
+
+
+***********************************************************************MATRIZES*****************************************************************************
+
+
+/*
+01.Leia uma matriz 4 × 4, conte e escreva quantos valores maiores que 10 ela possui. 
+*/
+#include <stdio.h>
+
+int main(void)
+{
+  int A[4][4];//Matriz 4x4
+  int count = 0;
+  for (int i = 0; i < 4; i++)
+  {
+    for (int j = 0; j < 4; j++)
+    {
+      printf("Digite o valor da linha %d e coluna %d: ", i + 1, j + 1);
+      scanf("%d", &A[i][j]);
+      if (A[i][j] > 10)
+      {
+        count++;
+      }
+    }
+  }
+  printf("Valores maiores que 10: %d\n", count); //Valores Final maiores de 10
+  return 0;
+}
+
+
+/*
+02.Declare uma matriz 5 × 5. Preencha com 1 a diagonal principal e com 0 os demais elementos. 
+Escreva ao final a matriz obtida.
+*/
+#include <stdio.h>
+
+int main(void)
+{
+  int A[5][5]; //Matriz 5x5
+  for (int i = 0; i < 5; i++)
+  {
+    for (int j = 0; j < 5; j++)
+    {
+      if (i == j)
+      {
+        A[i][j] = 1; //preencher com 1 a diagonal
+      }
+      else
+      {
+        A[i][j] = 0; //Preencher com 0 os demais 
+      }
+    }
+  }
+  for (int i = 0; i < 5; i++)
+  {
+    for (int j = 0; j < 5; j++)
+    {
+      printf("%d ", A[i][j]); //Matriz obtida final
+    }
+    printf("\n");
+  }
+  return 0;
+}
+
+
+/*
+03.Leia uma matriz 4 × 4, imprima a matriz e retorne a localização (linha e a coluna) do maior 
+valor. 
+*/
+#include <stdio.h>
+
+int main(void)
+{
+  int A[4][4]; //Matriz 4x4
+  int maior = 0;
+  int linha = 0;
+  int coluna = 0;
+  for (int i = 0; i < 4; i++)
+  {
+    for (int j = 0; j < 4; j++)
+    {
+      printf("Digite o valor da linha %d e coluna %d: ", i + 1, j + 1);
+      scanf("%d", &A[i][j]);
+      if (A[i][j] > maior) //Localização 
+      {
+        maior = A[i][j];
+        linha = i;
+        coluna = j;
+      }
+    }
+  }
+  printf("Maior: %d\n", maior); //Lozalização Final Maior 
+  printf("Linha: %d\n", linha); //Localização Final Linha
+  printf("Coluna: %d\n", coluna); //Localização Final Coluna 
+  return 0;
+}
+
+
+
+/*
+04.Leia uma matriz 5 × 5. Leia também um valor X. O programa deverá fazer uma busca desse 
+valor na matriz e, ao final, escrever a localização (linha e coluna) ou uma mensagem de “não 
+encontrado”
+*/
+#include <stdio.h>
+
+int main(void)
+{
+  int A[5][5]; //Matriz 5x5
+  int X;
+  int linha = 0;
+  int coluna = 0;
+  int found = 0;
+  for (int i = 0; i < 5; i++)
+  {
+    for (int j = 0; j < 5; j++)
+    {
+      printf("Digite o valor da linha %d e coluna %d: ", i + 1, j + 1);
+      scanf("%d", &A[i][j]);
+    }
+  }
+  printf("Digite X: ");
+  scanf("%d", &X); //Lê valor X
+  for (int i = 0; i < 5; i++)
+  {
+    for (int j = 0; j < 5; j++)
+    {
+      if (A[i][j] == X) //Busca na matrix
+      {
+        linha = i;
+        coluna = j;
+        found = 1;
+      }
+    }
+  }
+  if (found)
+  {
+    printf("Linha: %d\n", linha);
+    printf("Coluna: %d\n", coluna);
+  }
+  else
+  {
+    printf("Não encontrado\n");
+  }
+  return 0;
+}
+
+
+
+/*
+05.Gerar e imprimir uma matriz de tamanho 10 × 10, onde seus elementos são da forma: 
+A[i][j] = 2i + 7j - 2 se i < j; 
+A[i][j] = 3i2 - 1 se i = j; 
+A[i][j] = 4i3 – 5j2 + 1 se i > j:
+*/
+
+#include <stdio.h>
+
+int main(void)
+{
+  int A[10][10]; //Matriz 10x10
+  for (int i = 0; i < 10; i++)
+  {
+    for (int j = 0; j < 10; j++)
+    {
+      if (i < j)
+      {
+        A[i][j] = 2 * i + 7 * j - 2;
+      }
+      else if (i == j)
+      {
+        A[i][j] = 3 * i * i - 1;
+      }
+      else
+      {
+        A[i][j] = 4 * i * i * i - 5 * j * j + 1;
+      }
+    }
+  }
+  for (int i = 0; i < 10; i++)
+  {
+    for (int j = 0; j < 10; j++)
+    {
+      printf("%d ", A[i][j]);
+    }
+    printf("\n");
+  }
+  return 0;
+}
+
+
+
+/*
+06.Gere matriz 4 × 4 com valores no intervalo [1, 20]. Escreva um programa que transforme a 
+matriz gerada numa matriz triangular inferior, ou seja, atribuindo zero a todos os elementos 
+acima da diagonal principal. Imprima a matriz original e a matriz transformada. 
+*/
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+  int A[4][4]; //Matriz 4x4
+  for (int i = 0; i < 4; i++)
+  {
+    for (int j = 0; j < 4; j++)
+    {
+      A[i][j] = rand() % 20 + 1; //Intervalo de 1-20
+    }
+  }
+  for (int i = 0; i < 4; i++)
+  {
+    for (int j = 0; j < 4; j++)
+    {
+      printf("%d ", A[i][j]);
+    }
+    printf("\n");
+  }
+  printf("\n");
+  for (int i = 0; i < 4; i++)
+  {
+    for (int j = 0; j < 4; j++)
+    {
+      if (i < j)
+      {
+        A[i][j] = 0;
+      }
+    }
+  }
+  for (int i = 0; i < 4; i++)
+  {
+    for (int j = 0; j < 4; j++)
+    {
+      printf("%d ", A[i][j]);
+    }
+    printf("\n");
+  }
+  return 0;
+}
+
+
+/*
+07.Faça um programa para gerar automaticamente números entre  0 e 99 de  uma cartela de 
+bingo. Sabendo que cada cartela deverá conter 5 linhas de 5 números, gere estes dados de 
+modo  a  não  ter  números  repetidos  dentro  das  cartelas.  O  programa  deve  exibir  na tela  a 
+cartela gerada.
+*/
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+  int A[5][5]; //Matriz 5x5
+  for (int i = 0; i < 5; i++)
+  {
+    for (int j = 0; j < 5; j++)
+    {
+      int valor;
+      int existe;
+      do
+      {
+        valor = rand() % 100;     
+        existe = 0;   
+        for (int k = 0; k < j; k++)
+        {
+          if (A[i][k] == valor)
+          {
+            existe = 1;
+            break;
+          }
+        }
+        for (int k = 0; k < i; k++)
+        {
+          if (A[k][j] == valor)
+          {
+            existe = 1;
+            break;
+          }
+        }
+      } while (existe);
+      A[i][j] = valor;
+    }
+  }
+  for (int i = 0; i < 5; i++)
+  {
+    for (int j = 0; j < 5; j++)
+    {
+      printf("%d\t", A[i][j]); // Cartela gerada 
+    }
+    printf("\n");
+  }
+  return 0;
+}
+
+
+
+/*
+08.Faça um programa que leia duas matrizes 2  × 2 com valores reais. Ofereça ao usuário um
+menu de opções:
+a) somar as duas matrizes
+b) subtrair a primeira matriz da segunda
+c) adicionar uma constante às duas matrizes
+d) imprimir as matrizes
+*/
+#include <stdio.h>
+
+int main(void)
+{
+  int A[2][2], B[2][2]; //Matriz 2x2 
+  int opcao;
+  int constante;
+  for (int i = 0; i < 2; i++)
+  {
+    for (int j = 0; j < 2; j++)
+    {
+      printf("Digite o %dº valor da matriz A: ", i * 2 + j + 1); //Lê o valor de A
+      scanf("%d", &A[i][j]);
+    }
+  }
+  for (int i = 0; i < 2; i++)
+  {
+    for (int j = 0; j < 2; j++)
+    {
+      printf("Digite o %dº valor da matriz B: ", i * 2 + j + 1); //Lê o valor de B
+      scanf("%d", &B[i][j]);
+    }
+  }
+  printf("1 - Somar as duas matrizes\n");
+  printf("2 - Subtrair a primeira matriz da segunda\n");
+  printf("3 - Adicionar uma constante às duas matrizes\n");
+  printf("4 - Imprimir as matrizes\n");
+  printf("Digite a opção desejada: ");
+  scanf("%d", &opcao);
+  switch (opcao)
+  {
+  case 1:
+    for (int i = 0; i < 2; i++)
+    {
+      for (int j = 0; j < 2; j++)
+      {
+        printf("%d ", A[i][j] + B[i][j]);
+      }
+      printf("\n");
+    }
+    break;
+  case 2:
+    for (int i = 0; i < 2; i++)
+    {
+      for (int j = 0; j < 2; j++)
+      {
+        printf("%d ", A[i][j] - B[i][j]);
+      }
+      printf("\n");
+    }
+    break;
+  case 3:
+    printf("Digite a constante: ");
+    scanf("%d", &constante);
+    for (int i = 0; i < 2; i++)
+    {
+      for (int j = 0; j < 2; j++)
+      {
+        printf("%d ", A[i][j] + constante);
+      }
+      printf("\n");
+    }
+    for (int i = 0; i < 2; i++)
+    {
+      for (int j = 0; j < 2; j++)
+      {
+        printf("%d ", B[i][j] + constante);
+      }
+      printf("\n");
+    }
+    break;
+  case 4:
+    for (int i = 0; i < 2; i++)
+    {
+      for (int j = 0; j < 2; j++)
+      {
+        printf("%d ", A[i][j]);
+      }
+      printf("\n");
+    }
+    for (int i = 0; i < 2; i++)
+    {
+      for (int j = 0; j < 2; j++)
+      {
+        printf("%d ", B[i][j]);
+      }
+      printf("\n");
+    }
+    break;
+  default:
+    printf("Opção inválida!\n");
+    break;
+  }
+  return 0;
+}
+
+*************************************************************************STRINGS*****************************************************************************
+
+
+/*
+01.Faça um programa que leia uma string e a imprima.
+*/
+
+
+#include <stdio.h>
+
+vazioprincipal() {
+    char str[100];
+
+    fgets(str,100, stdin);
+    printf("%s", str);
+}
+
+
+/*
+02.Faça um programa que conte o número de 1's que aparecem em uma string. Exemplo:
+"0011001" -> 3
+*/
+
+
+#include <stdio.h>
+
+vazioprincipal()
+{
+  char str[100];
+  inti, contagem =0;
+
+  fgets(str,100, stdin);
+  for(i =0; str[i] !='\0'; i++)
+  {
+    if(str[i] =='1')
+    {
+contagem++;
+    }
+  }
+  printf("String tem %d 1's\n", count);
+}
+
+
+/*
+03.Faça um programa que receba uma palavra e a imprima de trás-para-frente.
+*/
+
+
+#include <stdio.h>
+
+vazioprincipal()
+{
+  char str[100];
+  int i;
+
+  fgets(str,100, stdin);
+  for(i =0; str[i] !='\0'; i++)
+  {
+  }
+  for (i--; i >= 0; i--)
+  {
+    printf("%c", str[i]);
+  }
+  printf("\n");
+}
+
+
+
+/*
+04.Faça um programa que receba uma palavra e calcule quantas vogais (a, e, i, o, u) possui essa 
+palavra.  Entre  com  um  caractere  (vogal  ou  consoante)  e  substitua  todas  as  vogais  da  palavra 
+dada por esse caractere. 
+*/
+
+
+#include <stdio.h>
+
+vazioprincipal()
+{
+  char str[100], c;
+  inti, contagem =0;
+
+  fgets(str,100, stdin);
+  scanf("%c", &c);
+  for(i =0; str[i] !='\0'; i++)
+  {
+    if(str[i] =='a'|| str[i] =='e'|| str[i] =='i'|| str[i] =='o'|| str[i] =='u')
+    {
+      str[i] = c;
+contagem++;
+    }
+  }
+  printf("A string tem %d vogais\n", count);
+  printf("%s", str);
+}
+
+
+
+/*
+05.Escreva um programa para converter uma cadeia de caracteres de letras maiúsculas em letras 
+minúsculas. Dica: some 32 dos caracteres cujo código ASCII está entre 65 e 90.
+*/
+
+
+#include <stdio.h>
+
+vazioprincipal()
+{
+  char str[100];
+  int i;
+
+  fgets(str,100, stdin);
+  for(i =0; str[i] !='\0'; i++)
+  {
+    if(str[i] >='A'&& str[i] <='Z')
+    {
+      str[i] += 32;
+    }
+  }
+  printf("%s", str);
+}
+
+
+/*
+06.Leia uma cadeia de caracteres e converta todos os caracteres para maiúscula. Dica: subtraia 
+32 dos caracteres cujo código ASCII está entre 97 e 122.
+*/
+
+
+#include <stdio.h>
+
+vazioprincipal()
+{
+  char str[100];
+  int i;
+
+  fgets(str,100, stdin);
+  for(i =0; str[i] !='\0'; i++)
+  {
+    if(str[i] >='a'&& str[i] <='z')
+    {
+      str[i] -= 32;
+    }
+  }
+  printf("%s", str);
+}
+
+
+
+/*
+07.Leia um vetor contendo letras de uma frase inclusive os espaços em branco. Retirar os 
+espaços em branco do vetor e depois escrever o vetor resultante.
+*/
+
+
+#include <stdio.h>
+
+vazioprincipal()
+{
+  char str[100];
+  int i, j;
+
+  fgets(str,100, stdin);
+  for(i =0, j =0; str[i] !='\0'; i++)
+  {
+    if (str[i] != ' ')
+    {
+      str[j] = str[i];
+      j++;
+    }
+  }
+str[j] ='\0';
+  printf("%s", str);
+}
+
+
+/*
+08.Faça um programa em que troque todas as ocorrências de uma letra L1 pela letra L2 em 
+uma corda. A string e as letras L1 e L2 devem ser fornecidas pelo usuário.
+*/
+
+
+#include <stdio.h>
+
+vazioprincipal()
+{
+  char str[100], l1, l2;
+  int i;
+
+  fgets(str,100, stdin);
+  scanf("%c%c", &l1, &l2);
+  for(i =0; str[i] !='\0'; i++)
+  {
+    if (str[i] == l1)
+    {
+      str[i] = l2;
+    }
+  }
+  printf("%s", str);
+}
+
+
+/*
+09.Faça  um  programa  que  preencha  uma  matriz  de  string  com  os  modelos  de  cinco  carros
+(exemplos de modelos: Fusca, Gol, Vectra, etc.). Em seguida, preencha um vetor com o consumo
+desses carros, isto é, quantos quilômetros cada um deles faz com um litro de combustível.
+Calcule e mostre:
+(a) O modelo de carro mais econômico;
+(b)  Quantos  litros  de  combustível  cada  um  dos  carros  cadastrados  consome  para
+percorrer uma distância de 1.000 quilômetros.
+*/
+
+
+#include <stdio.h>
+#include <string.h>
+
+vazioprincipal()
+{
+  char str[5][100];
+  floatcontras[5], maior =0;
+  int i, j, pos;
+
+  for (i = 0; i < 5; i++)
+  {
+    printf("Digite o modelo do carro %d:\n", i + 1);
+    fgets(str[i], 100, stdin);
+str[i][strlen(str[i]) -1] ='\0';
+
+    printf("Digite o consumo do carro %d:\n", i + 1);
+    scanf("%f", &cons[i]);
+    printf("\n");
+    getchar();
+  }
+
+  for (i = 0; i < 5; i++)
+  {
+    if (cons[i] > maior)
+    {
+maior = contras[i];
+      pos = i;
+    }
+  }
+  printf("O carro mais economico e : %s\n", str[pos]);
+
+  for (i = 0; i < 5; i++)
+  {
+    printf("O carro%sconsome%.2flitros para percorrer 1000km\n", str[i],1000/ cons[i]);
+  }
+}
+
+
+/*
+10.Ler o nome e o valor de uma determinada mercadoria de uma loja. Sabendo que o desconto
+para pagamento à vista é de 10% sobre o valor total, calcular o valor a ser pago à vista. Escrever
+o nome da mercadoria, o valor total, o valor do desconto e o valor a ser pago à vista.
+*/
+
+
+#include <stdio.h>
+
+vazioprincipal()
+{
+  char nome[100];
+  float valor, desconto, valor_a_vista;
+
+  fgets(nome,100, stdin);
+  scanf("%f", &valor);
+  desconto = valor * 0.1;
+  valor_a_vista = valor - desconto;
+  printf("\n Nome:%s\n", nome);
+  printf("Valor total: %.2f\n", valor);
+  printf("Desconto: %.2f\n", desconto);
+  printf("A vista: %.2f\n", valor_a_vista);
+}
+
+
+/*
+11.Escreva  um  programa  que  recebe  uma  string  S  e  inteiros  não-negativos  I  e  J  e  imprima  o 
+segmento S[I.. J].
+*/
+
+
+#include <stdio.h>
+
+vazioprincipal()
+{
+  char str[100];
+  int i, j;
+
+  fgets(str,100, stdin);
+  scanf("%d%d", &i, &j);
+  para(; i <= j; i++)
+  {
+    printf("%c", str[i]);
+  }
+  printf("\n");
+}
+
+
+/*
+12.O código de César é uma das mais simples e conhecidas técnicas de criptografia. É um tipo 
+de substituição na qual cada letra do texto  substituída por outra, que se apresenta no alfabeto 
+abaixo dela um número fixo de vezes. Por exemplo, com uma troca de três posições, 'A' seria
+substituído por 'D', 'B' se tornaria 'E', e assim por diante. Implemente um programa que faça
+uso desse Código de César (3 posições), entre com uma string e retorne a string codificada.  
+Exemplo: 
+Corda: a ligeira raposa marrom saltou sobre o cachorro cansado
+Nova string: D OLJHLUD UDSRVD PDUURP VDOWRX VREUH R FDFKRUUR FDQVDGR
+*/
+
+
+#include <stdio.h>
+
+vazioprincipal()
+{
+  char str[100];
+  int i;
+
+  fgets(str,100, stdin);
+  for(i =0; str[i] !='\0'; i++)
+  {
+    if(str[i] >='A'&& str[i] <='Z')
+    {
+str[i] = (str[i] -'A'+3) %26+'A';
+    }
+    elseif(str[i] >='a'&& str[i] <='z')
+    {
+str[i] = (str[i] -'a'+3) %26+'a';
+    }
+  }
+  printf("%s", str);
+}
+
+
+/*
+13.Faça um programa que, dada uma string, diga se ela é um palíndromo ou não. Lembrando 
+que um palíndromo é uma palavra que tenha a propriedade de poder ser lida tanto da direita 
+para a esquerda como da esquerda para a direita.  
+Exemplo: 
+ovo 
+arara 
+Socorram-me, subi no ônibus em Marrocos 
+Anotaram a data da maratona
+*/
+
+
+#include <stdio.h>
+
+vazioprincipal() {
+  char str[100], str_without_special_characters[100];
+  int i, j, is_palindrome = 1;
+
+  fgets(str,100, stdin);
+
+  for(i =0; str[i] !='\0'; i++) {}
+
+  for(i--, j =0; i >=0; i--) {
+    if((str[i] >='a'&& str[i] <='z') || (str[i] >='A'&& str[i] <='Z')) {
+      str_without_special_characters[j] = str[i];
+      j++;
+    }
+  }
+
+  for (i = 0; i < j; i++) {
+    se (
+      (str_without_special_characters[i] != str_without_special_characters[j - i - 1])
+      && (str_without_special_characters[i] != str_without_special_characters[j - i - 1] + 32)
+      && (str_without_special_characters[i] != str_without_special_characters[j - i - 1] - 32)
+      ) {
+      is_palindrome = 0;
+      quebrar;
+    }
+  }
+
+  if (is_palindrome) {
+    printf("Uma string e um palindromo\n");
+  } mais {
+    printf("String nao e um palindromo\n");
+  }
+}
+ 
+
+
+/*
+14.Implemente  um programa que leia duas strings,  str1 e str2, e  um valor inteiro positivo  N. 
+Concatene não mais que N caracteres da string str2 à string str1 e termine str1 com '\0'.
+*/
+
+
+#include <stdio.h>
+
+vazioprincipal()
+{
+  char str1[100], str2[100];
+  int i, j, n;
+
+  fgets(str1.100, stdin);
+  fgets(str2.100, stdin);
+  scanf("%d", &n);
+  for(i =0; str1[i] !='\0'; i++)
+  {
+  }
+  for (j = 0; j < n; j++)
+  {
+    str1[i + j] = str2[j];
+  }
+str1[i + j] ='\0';
+  printf("%s", str1);
+}
+
+
+/*
+15.Faça um programa que contenha um menu com as seguintes opções:
+(a) Ler uma string S1 (tamanho máximo 20 caracteres);
+(b) Imprimir o tamanho da string S1;
+(c)  Comparar  a  string  S1  com  uma  nova  string  S2  fornecida  pelo  usuário  e  imprimir  o
+resultado da comparação;
+(d)  Concatenar  a  string  S1  com  uma  nova  string  S2  e  imprimir  na  tela  o  resultado  da
+concatenação;
+(e) Imprimir a string S1 de forma reversa;
+(f) Contar quantas vezes um dado caractere aparece na string S1. Esse caractere desse
+ser informado pelo usuário;
+(g) Substituir a primeira ocorrência do caractere C1 da string S1 pelo caractere C2. SO
+caracteres C1 e C2 serão lidos pelo usuário;
+(h)  Verificar  se  uma  string  S2  é  substring  de  S1.  A  string  S2  deve  ser  informada  pelo
+usuário;
+(i) Retornar uma substring da string S1. Para isso o usuário deve informar a partir de qual
+posição deve ser criada a substring e qual é o tamanho da substring.
+*/
+
+
+#include <stdio.h>
+#include <string.h>
+
+vazioprincipal()
+{
+  charstr1[20], str2[20], c1, c2, op, substring[20];
+  int i, count = 0, posisao, tamanho;
+
+  fazer
+  {    
+    printf("\n(a) Ler uma string S1 (tamanho máximo 20 caracteres); \n");
+    printf("(b) Imprimir o tamanho da string S1; \n");
+    printf("(c) Comparar a string S1 com uma nova string S2 fornecida pelo usuário e imprimir o resultado da comparação; \n");
+    printf("(d) Concatenar a string S1 com uma nova string S2 e imprimir na tela o resultado da concatenação; \n");
+    printf("(e) Imprimir a string S1 de forma reversa; \n");
+    printf("(f) Contar quantas vezes um dado caractere aparece na string S1. Esse caractere desse ser informado pelo usuário; \n");
+    printf("(g) Substituir a primeira ocorrência do caractere C1 da string S1 pelo caractere C2. Os caracteres C1 e C2 serão lidos pelo usuário; \n");
+    printf("(h) Verificar se uma string S2 é substring de S1. A string S2 deve ser informada pelo usuário; \n");
+    printf("(i) Retornar uma substring da string S1. Para isso o usuário deve informar a partir de qual posição deve ser criada a substring e qual é o tamanho da substring. \n");
+    printf("Digite a opção desejada:\n");
+    scanf("%c", &op);
+    getchar();
+
+    switch (op)
+    {
+    caso «a»:
+      printf("\n Digite uma cadeia de caracteres S1:\n");
+      fgets(str1.20, stdin);
+str1[strlen(str1) -1] ='\0';
+      quebrar;
+    caso «b»:
+      printf("O tamanho da string S1 é%d\n",strlen(str1));
+      quebrar;
+    caso «c»:
+      printf("\nDigite uma string S2:");
+      fgets(str2.20, stdin);
+      printf(strcmp(str1, str2) ? " As strings sao diferentes\n":"As strings sao iguais\n");
+      quebrar;
+    case'd':
+      printf("\nDigite uma string S2:");
+      fgets(str2.20, stdin);
+      printf("O resultado da concatenação é\"%s\"\n",strcat(str1, str2));
+      quebrar;
+    caso «e»:
+      for (i = strlen(str1) - 1; i >= 0; i--)
+      {
+        printf("%c", str1[i]);
+      }
+      printf("\n");
+      quebrar;
+    caso «f»:
+      printf("\nDigite o caractere: ");
+      scanf("%c", &c1);
+      for(i =0; str1[i] !='\0'; i++)
+      {
+        if (str1[i] == c1)
+        {
+contagem++;
+        }
+      }
+      printf("\n O caractere%caparece%dvezes na string S1\n", c1, count);
+      quebrar;
+    caso'g':
+      printf("\nDigite o caractere C1: ");
+      scanf("%c", &c1);
+      printf("\nDigite o caractere C2: ");
+      scanf("%c", &c2);
+      for(i =0; str1[i] !='\0'; i++)
+      {
+        if (str1[i] == c1)
+        {
+          str1[i] = c2;
+          quebrar;
+        }
+      }
+      printf("S1 atualizada é:%s\n", str1);
+      quebrar;
+    caso'h':
+      printf("\nDigite uma string S2:");
+      fgets(str2.20, stdin);
+      if(strstr(str1, str2) !=NULL)
+      {
+        printf("A string S2 é substring de S1\n");
+      }
+      mais
+      {
+        printf("A string S2 não é substring de S1\n");
+      }
+      quebrar;
+    caso'i':
+      printf("\nDigite a posição: ");
+      scanf("%d", &posisao);
+      printf("\nDigite o tamanho: ");
+      scanf("%d", &tamanho);
+      
+      for (i = posisao; i <= tamanho; i++)
+      {
+        substring[i] = str1[posisao + i];
+      }
+substring[i +1] ='\0';
+
+      printf("A substring é%s\n", substring);
+      quebrar;
+    }
+  } while (op >= 'a' || op <= 'i');
+}
+
+
+/*
+16.Faça um programa que encontre o conjunto de 5 dígitos consecutivos na sequência abaixo 
+que gere o maior produto:
+*/
+
+#include <stdio.h>
+
+vazioprincipal()
+{  
+  char str[1000];
+  int i, j, Produto, Produto_Max = 0;
+
+  fgets(str,1000, stdin);
+
+  for(i =0; str[i +4] !='\0'&& str[i +4] !='\n'; i++)
+  {
+    Produto = 1;
+    for (j = i; j < i + 5; j++)
+    {
+      Produto *= (str[j] - 48);
+    }
+    if (Produto > Produto_Max)
+    {
+      Produto = Produto_Max;
+    }
+  }
+  printf("O maior produto é: %d\n", max_prod); 
+}
