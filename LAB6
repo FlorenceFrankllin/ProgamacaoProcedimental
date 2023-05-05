@@ -1,0 +1,1106 @@
+/*
+01-Escreva  um  trecho  de  código  para  fazer  a  criação  dos  novos  tipos  de  dados  conforme 
+solicitado abaixo:  
+- Horário: composto de hora, minutos e segundos. 
+- Data: composto de dia, mês e ano. 
+- Compromisso: composto de uma data, horário e texto que descreve o compromisso.
+*/
+
+#include <stdio.h>
+
+struct Horario {
+    int hora;
+    int minuto;
+    int segundo;
+};
+
+struct Data {
+    int dia;
+    int mes;
+    int ano;
+};
+
+struct Compromisso {
+    struct Data data;
+    struct Horario horario;
+    char texto[100];
+};
+
+
+
+
+/*
+02-Implemente um programa que leia o nome, a idade e o endereço de uma pessoa e armazene
+os dados em uma estrutura.
+*/
+#include <stdio.h>
+
+struct Pessoa
+{
+  char nome[100];
+  int idade;
+  char endereco[100];
+};
+
+int main()
+{
+  struct Pessoa pessoa;
+  printf("Digite o nome da pessoa: ");
+  scanf("%s", pessoa.nome);
+  printf("Digite a idade da pessoa: ");
+  scanf("%d", &pessoa.idade);
+  printf("Digite o endereço da pessoa: ");
+  scanf("%s", pessoa.endereco);
+
+  printf("Nome: %s\nEndereço: %s\nIdade: %d\n", pessoa.nome, pessoa.endereco, pessoa.idade);
+
+  return 0;
+}
+
+
+
+/*
+03-Construa uma estrutura aluno com nome, número de matrıcula e curso. Leia do usuário a 
+informação de 5 alunos, armazene em um vetor dessa estrutura e imprima os dados na tela
+*/
+#include <stdio.h>
+
+struct Aluno
+{
+  char nome[100];
+  int matricula;
+  char curso[100];
+};
+
+int main()
+{
+  struct Aluno alunos[5];
+  for (int i = 0; i < 5; i++)
+  {
+    printf("Digite o nome do aluno %d: ", i + 1);
+    scanf("%s", alunos[i].nome);
+    printf("Digite a matrícula do aluno %d: ", i + 1);
+    scanf("%d", &alunos[i].matricula);
+    printf("Digite o curso do aluno %d: ", i + 1);
+    scanf("%s", alunos[i].curso);
+    printf("\n");
+  }
+
+  for (int i = 0; i < 5; i++)
+  {
+    printf("Nome: %s\nMatrícula: %d\nCurso: %s\n\n", alunos[i].nome, alunos[i].matricula, alunos[i].curso);
+  }
+
+  return 0;
+}
+
+
+
+/*
+04- Crie  uma  estrutura  representando  os  alunos  de  um  determinado  curso.  A  estrutura  deve
+conter a matrícula do aluno, nome, nota da primeira prova, nota da segunda prova e nota
+da terceira prova.
+a) Permita ao usuário entrar com os dados de 5 alunos;
+b) Encontre o aluno com maior nota da primeira prova;
+c) Encontre o aluno com maior média geral;
+d) Encontre o aluno com menor média geral;
+e) Para cada aluno diga se ele foi aprovado ou reprovado, considerando o valor 6 para
+aprovação.
+*/
+
+
+#include <stdio.h>
+
+struct Aluno
+{
+  int matricula;
+  char nome[100];
+  float nota_1;
+  float nota_2;
+  float nota_3;
+};
+
+int main()
+{
+  struct Aluno alunos[5];
+  for (int i = 0; i < 5; i++)
+  {
+    printf("Digite a matrícula do aluno %d: ", i + 1);
+    scanf("%d", &alunos[i].matricula);
+    printf("Digite o nome do aluno %d: ", i + 1);
+    scanf("%s", alunos[i].nome);
+    printf("Digite a nota 1 do aluno %d: ", i + 1);
+    scanf("%f", &alunos[i].nota_1);
+    printf("Digite a nota 2 do aluno %d: ", i + 1);
+    scanf("%f", &alunos[i].nota_2);
+    printf("Digite a nota 3 do aluno %d: ", i + 1);
+    scanf("%f", &alunos[i].nota_3);
+    printf("\n");
+  }
+
+  float maior_Nota_1 = 0, maior_Media = 0, menor_Media = 0;
+  int indice_Maior_Nota_1 = 0, indice_Maior_Media = 0, indice_Menor_Media = 0;
+
+  for (int i = 0; i < 5; i++)
+  {
+    float media = (alunos[i].nota_1 + alunos[i].nota_2 + alunos[i].nota_3) / 3;
+    if (alunos[i].nota_1 > maior_Nota_1)
+    {
+      maior_Nota_1 = alunos[i].nota1;
+      indice_Maior_Nota_1 = i;
+    }
+    if (media > maior_Media)
+    {
+      maior_Media = media;
+      indice_Maior_Media = i;
+    }
+    if (media < menor_Media)
+    {
+      menor_Media = media;
+      indice_Menor_Media = i;
+    }
+  }
+
+  printf("Aluno com maior nota da primeira prova: %s\n", alunos[indice_Maior_Nota_1].nome);
+  printf("Aluno com maior média geral: %s\n", alunos[indiceMaiorMedia].nome);
+  printf("Aluno com menor média geral: %s\n", alunos[indiceMenorMedia].nome);
+
+  for (int i = 0; i < 5; i++)
+  {
+    float media = (alunos[i].nota_1 + alunos[i].nota_2 + alunos[i].nota_3) / 3;
+    if (media >= 6)
+    {
+      printf("Aluno %s foi aprovado com média %.2f\n", alunos[i].nome, media);
+    }
+    else
+    {
+      printf("Aluno %s foi reprovado com média %.2f\n", alunos[i].nome, media);
+    }
+  }
+
+  return 0;
+}
+
+
+
+/*
+05-Considerando a estrutura  
+struct vetor { 
+ float a; 
+ float b; 
+ float c; 
+};  
+para  representar  um  vetor  no  R3,  implemente  um  programa  que  calcule  a  soma  de  dois 
+vetores.
+*/
+
+#include <stdio.h>
+
+struct Vetor {
+    float a;
+    float b;
+    float c;
+};
+
+int main()
+{
+    struct Vetor vetor1, vetor2, vetor3;
+
+    printf("Digite o valor de a do primeiro vetor: ");
+    scanf("%f", &vetor1.a);
+    printf("Digite o valor de b do primeiro vetor: ");
+    scanf("%f", &vetor1.b);
+    printf("Digite o valor de c do primeiro vetor: ");
+    scanf("%f", &vetor1.c);
+    printf("Digite o valor de a do segundo vetor: ");
+    scanf("%f", &vetor2.a);
+    printf("Digite o valor de b do segundo vetor: ");
+    scanf("%f", &vetor2.b);
+    printf("Digite o valor de c do segundo vetor: ");
+    scanf("%f", &vetor2.c);
+
+    vetor3.a = vetor1.a + vetor2.a;
+    vetor3.b = vetor1.b + vetor2.b;
+    vetor3.c = vetor1.c + vetor2.c;
+    
+    printf("Vetor 1: (%.2f, %.2f, %.2f)\n", vetor1.a, vetor1.b, vetor1.c);
+    printf("Vetor 2: (%.2f, %.2f, %.2f)\n", vetor2.a, vetor2.b, vetor2.c);
+    printf("Vetor 3: (%.2f, %.2f, %.2f)\n", vetor3.a, vetor3.b, vetor3.c);
+
+    return 0;
+}
+
+
+/*
+06-Faça um programa que armazene em um registro de dados (estrutura composta) os dados 
+de um funcionário de uma empresa, compostos de: Nome, Idade, Sexo (M/F), CPF, Data de 
+Nascimento,  Código  do  Setor  onde  trabalha  (0-99),  Cargo  que  ocupa  (string  de  até  30 
+caracteres) e Salário. Os dados devem ser digitados pelo usuário, armazenados na estrutura 
+e exibidos na tela.
+*/
+
+
+#include <stdio.h>
+
+struct Data {
+  int dia;
+  int mes;
+  int ano;
+};
+
+struct Funcionario {
+  char nome[100];
+  int idade;
+  char sexo;
+  char cpf[12];
+  struct Data data_nascimento;
+  int codigo_setor;
+  char cargo[30];
+  float salario;
+};
+
+void main() {
+  struct Funcionario funcionario;
+
+  printf("Digite o nome do funcionário:\n");
+  setbuf(stdin, NULL);
+  fgets(funcionario.nome, 100, stdin);  
+
+  printf("Digite a idade do funcionário:\n");
+  scanf("%d", &funcionario.idade);
+
+  printf("Digite o sexo do funcionário (M/F):\n");
+  scanf(" %c", &funcionario.sexo);  
+
+  printf("Digite o CPF do funcionário:\n");
+  setbuf(stdin, NULL);
+  fgets(funcionario.cpf, 12, stdin);  
+
+  printf("Digite o dia de nascimento do funcionário:\n");
+  scanf("%d", &funcionario.data_nascimento.dia);
+  printf("Digite o mês de nascimento do funcionário:\n");
+  scanf("%d", &funcionario.data_nascimento.mes);
+  printf("Digite o ano de nascimento do funcionário:\n");
+  scanf("%d", &funcionario.data_nascimento.ano);
+
+  printf("Digite o código do setor do funcionário:\n");
+  scanf("%d", &funcionario.codigo_setor);
+
+  printf("Digite o cargo do funcionário:\n");
+  setbuf(stdin, NULL);
+  fgets(funcionario.cargo, 30, stdin);  
+
+  printf("Digite o salário do funcionário:\n");
+  scanf("%f", &funcionario.salario);
+
+  printf("\n\n\n");
+
+  printf("Nome: %s\n", funcionario.nome);
+  printf("Idade: %d\n", funcionario.idade);
+  printf("Sexo: %c\n", funcionario.sexo);
+  printf("CPF: %s\n", funcionario.cpf);
+  printf("Data de nascimento: %d/%d/%d\n", funcionario.data_nascimento.dia, funcionario.data_nascimento.mes, funcionario.data_nascimento.ano);
+  printf("Código do setor: %d\n", funcionario.codigo_setor);
+  printf("Cargo: %s\n", funcionario.cargo);
+  printf("Salário: %.2f\n", funcionario.salario);  
+}
+
+
+/*
+07-Utilizando uma estrutura, faça um programa que  permita a entrada de nome, endereço e
+telefone de 5 pessoas e os imprima em ordem alfabética.
+*/
+
+#include <stdio.h>
+#include <string.h>
+
+struct Pessoa
+{
+  char nome[100];
+  char endereco[100];
+  char telefone[100];
+};
+
+int main()
+{
+  struct Pessoa pessoas[5];
+
+  for (int i = 0; i < 5; i++)
+  {
+    printf("Digite o nome da pessoa %d: ", i + 1);
+    setbuf(stdin, NULL);
+    fgets(pessoas[i].nome, 100, stdin);
+
+    printf("Digite o endereço da pessoa %d: ", i + 1);
+    setbuf(stdin, NULL);
+    fgets(pessoas[i].endereco, 100, stdin);
+
+    printf("Digite o telefone da pessoa %d: ", i + 1);
+    setbuf(stdin, NULL);
+    fgets(pessoas[i].telefone, 100, stdin);
+    printf("\n");
+  }
+
+  // ordene as pessoas pelo nome em ordem alfabética
+
+  int ordem[5];
+  for (int i = 0; i < 5; i++)
+  {
+    ordem[i] = i;
+  }
+
+  for (int i = 0; i < 5; i++)
+  {
+    for (int j = 0; j < 5; j++)
+    {
+      if (strcmp(pessoas[ordem[i]].nome, pessoas[ordem[j]].nome) < 0)
+      {
+        int aux = ordem[i];
+        ordem[i] = ordem[j];
+        ordem[j] = aux;
+      }
+    }
+  }
+
+  for (int i = 0; i < 5; i++)
+  {
+    printf("Nome: %s\n", pessoas[ordem[i]].nome);
+    printf("Endereço: %s\n", pessoas[ordem[i]].endereco);
+    printf("Telefone: %s\n", pessoas[ordem[i]].telefone);
+    printf("\n");
+  }
+
+  return 0;
+}
+
+
+
+/*
+08-Escolha um jogo de cartas, baseado em um “baralho tradicional” (cada carta tem seu naipe
+e  seu  valor).  Implemente  a  parte  de  distribuição  (sorteio)  de  cartas  para  2  jogadores,
+considerando que cada jogador irá receber 3 cartas. Exiba na tela as cartas que cada um dos
+jogadores recebeu.
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define NUMERO_DE_CARTAS 3
+#define NUMERO_DE_JOGADORES 2
+
+struct Carta
+{
+  char naipe[10];
+  char valor[1];
+};
+
+void main()
+{
+  srand(time(NULL));
+
+  char *NAIPES[4] = {"Paus", "Copas", "Espadas", "Ouros"},
+       *VALORES[13] = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+
+  for (int j = 1; j <= NUMERO_DE_JOGADORES; j++)
+  {
+    printf("Jogador %d:\n", j);
+    for (int i = 1; i <= NUMERO_DE_CARTAS; i++)
+    {
+      printf("Carta %d: %s de %s\n", i, VALORES[rand() % 13], NAIPES[rand() % 4]);
+    }
+    printf("\n");
+  }
+}
+
+
+
+
+/*
+09-Faça um programa que leia um vetor com os dados de 5 carros: marca (máximo 15 letras), 
+ano e preço. Leia um valor p e mostre as informações de todos os carros com preço menor 
+que p. Repita este processo até que seja lido um valor p = 0. 
+*/
+
+#include <stdio.h>
+
+struct Carro
+{
+  char marca[15];
+  int ano;
+  float preco;
+};
+
+int main()
+{
+  struct Carro carros[5];
+  for (int i = 0; i < 5; i++)
+  {
+    printf("Digite a marca do carro %d: ", i + 1);
+    setbuf(stdin, NULL);
+    fgets(carros[i].marca, 15, stdin);
+    printf("Digite o ano do carro %d: ", i + 1);
+    scanf("%d", &carros[i].ano);
+    printf("Digite o preço do carro %d: ", i + 1);
+    scanf("%f", &carros[i].preco);
+    printf("\n");
+  }
+
+  float p;
+  printf("Digite um valor para P: ");
+  scanf("%f", &p);
+  while (p != 0)
+  {
+    for (int i = 0; i < 5; i++)
+    {
+      if (carros[i].preco < p)
+      {
+        printf("Marca: %s\nAno: %d\nPreço: %.2f\n\n", carros[i].marca, carros[i].ano, carros[i].preco);
+      }
+    }
+    printf("Digite um valor para p: ");
+    scanf("%f", &p);
+  }
+
+  return 0;
+}
+
+
+/*
+10-Faça um programa que leia um vetor com dados de 5 livros: título (máximo 30 letras), autor 
+(máximo 15  letras)  e  ano. Procure  um  livro  por  título,  perguntando  ao  usuário qual  título 
+deseja buscar. Mostre os dados de todos os livros encontrados.
+*/
+
+
+#include <stdio.h>
+
+struct Livro
+{
+  char titulo[30];
+  char autor[15];
+  int ano;
+};
+
+int main()
+{
+  struct Livro livros[5];
+  for (int i = 0; i < 5; i++)
+  {
+    printf("Digite o título do livro %d: ", i + 1);
+    setbuf(stdin, NULL);
+    fgets(livros[i].titulo, 30, stdin);    
+    printf("Digite o autor do livro %d: ", i + 1);
+    setbuf(stdin, NULL);
+    fgets(livros[i].autor, 15, stdin);    
+    printf("Digite o ano do livro %d: ", i + 1);
+    scanf("%d", &livros[i].ano);
+    printf("\n");
+  }
+
+  char titulo[30];
+  printf("Digite o título do livro que deseja buscar: ");
+  scanf("%s", titulo);
+  for (int i = 0; i < 5; i++)
+  {
+    if (strcmp(livros[i].titulo, titulo) == 0)
+    {
+      printf("Título: %s\nAutor: %s\nAno: %d\n\n", livros[i].titulo, livros[i].autor, livros[i].ano);
+    }
+  }
+
+  return 0;
+}
+
+
+/*
+11-Faça um programa que seja uma agenda de compromissos e: 
+ - Crie e leia um vetor de 5 estruturas de dados com: compromisso (máximo 60 letras) e 
+data. A data deve ser outra estrutura de dados contendo dia, mês e ano; 
+ - Leia dois inteiros M e A e mostre todos os compromissos do mês M do ano A. Repita o 
+procedimento até ler M = 0. 
+*/
+
+
+#include <stdio.h>
+
+struct Data
+{
+  int dia;
+  int mes;
+  int ano;
+};
+
+struct Compromisso
+{
+  char compromisso[60];
+  struct Data data;
+};
+
+int main()
+{
+  struct Compromisso compromissos[5];
+  for (int i = 0; i < 5; i++)
+  {
+    printf("Digite o compromisso %d: ", i + 1);
+    setbuf(stdin, NULL);
+    fgets(compromissos[i].compromisso, 60, stdin);    
+    printf("Digite o dia do compromisso %d: ", i + 1);
+    scanf("%d", &compromissos[i].data.dia);
+    printf("Digite o mês do compromisso %d: ", i + 1);
+    scanf("%d", &compromissos[i].data.mes);
+    printf("Digite o ano do compromisso %d: ", i + 1);
+    scanf("%d", &compromissos[i].data.ano);
+    printf("\n");
+  }
+
+  int m, a;
+  printf("Digite um mês: ");
+  scanf("%d", &m);
+  printf("Digite um ano: ");
+  scanf("%d", &a);
+  while (m != 0)
+  {
+    for (int i = 0; i < 5; i++)
+    {
+      if (compromissos[i].data.mes == m && compromissos[i].data.ano == a)
+      {
+        printf("Compromisso: %s\nDia: %d\nMês: %d\nAno: %d\n\n", compromissos[i].compromisso, compromissos[i].data.dia, compromissos[i].data.mes, compromissos[i].data.ano);
+      }
+    }
+    printf("Digite um mês: ");
+    scanf("%d", &m);
+    printf("Digite um ano: ");
+    scanf("%d", &a);
+  }
+
+  return 0;
+}
+
+
+/*
+12- Faça um programa que controla o consumo de energia dos eletrodomésticos de sua casa e: 
+ - Crie e leia 5 eletrodomésticos que contém nome (máximo 15 letras), potência (real, em 
+kW) e tempo ativo por dia (real, em horas); 
+ - Leia  um  tempo  t  (em  dias),  calcule  e  mostre  o  consumo  total  na  casa  e  o  consumo 
+relativo de cada eletrodoméstico (consumo/consumo total) nesse período de tempo. 
+Apresente este último dado em porcentagem.
+*/
+
+#include <stdio.h>
+
+struct Eletrodomestico
+{
+  char nome[15];
+  float potencia;
+  float tempo_ativo;
+};
+
+int main()
+{
+  struct Eletrodomestico eletrodomesticos[5];
+  for (int i = 0; i < 5; i++)
+  {
+    printf("Digite o nome do eletrodoméstico %d: ", i + 1);
+    setbuf(stdin, NULL);
+    fgets(eletrodomesticos[i].nome, 15, stdin);    
+    printf("Digite a potência do eletrodoméstico %d: ", i + 1);
+    scanf("%f", &eletrodomesticos[i].potencia);
+    printf("Digite o tempo ativo do eletrodoméstico %d: ", i + 1);
+    scanf("%f", &eletrodomesticos[i].tempo_ativo);
+    printf("\n");
+  }
+
+  int t;
+  printf("Digite um valor para t: ");
+  scanf("%d", &t);
+  float consumo_total = 0;
+  for (int i = 0; i < 5; i++)
+  {
+    consumo_total += eletrodomesticos[i].potencia * eletrodomesticos[i].tempo_ativo * t;
+  }
+  printf("Consumo total: %.2f\n", consumo_total);
+  for (int i = 0; i < 5; i++)
+  {
+    printf("Consumo relativo do eletrodoméstico %d: %.2f%%\n", i + 1, (eletrodomesticos[i].potencia * eletrodomesticos[i].tempo_ativo * t) / consumo_total * 100);
+  }
+
+  return 0;
+}
+
+
+/*
+13-Faça um programa que gerencie o estoque de um mercado e: 
+ - Crie e  leia um vetor de 5 produtos, com os dados:  código (inteiro),  nome (máximo 15 
+letras), preço e quantidade; 
+- Leia  um  pedido,  composto  por  um  código  de  produto  e  a  quantidade.  Localize  este 
+código no vetor e, se houver quantidade suficiente para atender ao pedido 
+integralmente, atualize o estoque e informe o usuário. Repita este processo até ler um 
+código igual a zero. 
+Se por algum motivo não for possível atender ao pedido, mostre uma mensagem 
+informando qual erro ocorreu.
+*/
+
+#include <stdio.h>
+
+struct Produto
+{
+  int codigo;
+  char nome[15];
+  float preco;
+  int quantidade;
+};
+
+int main()
+{
+  struct Produto produtos[5];
+  for (int i = 0; i < 5; i++)
+  {
+    printf("Digite o código do produto %d: ", i + 1);
+    scanf("%d", &produtos[i].codigo);
+    printf("Digite o nome do produto %d: ", i + 1);
+    setbuf(stdin, NULL);
+    fgets(produtos[i].nome, 15, stdin);    
+    printf("Digite o preço do produto %d: ", i + 1);
+    scanf("%f", &produtos[i].preco);
+    printf("Digite a quantidade do produto %d: ", i + 1);
+    scanf("%d", &produtos[i].quantidade);
+    printf("\n");
+  }
+
+  int codigo, quantidade;
+  printf("Digite o código do produto que deseja comprar: ");
+  scanf("%d", &codigo);
+  while (codigo != 0)
+  {
+    printf("Digite a quantidade do produto que deseja comprar: ");
+    scanf("%d", &quantidade);
+    for (int i = 0; i < 5; i++)
+    {
+      if (produtos[i].codigo == codigo)
+      {
+        if (produtos[i].quantidade >= quantidade)
+        {
+          produtos[i].quantidade -= quantidade;
+          printf("Compra realizada com sucesso!\n\n");
+        }
+        else
+        {
+          printf("Não há quantidade suficiente para atender ao pedido!\n\n");
+        }
+      }
+    }
+    printf("Digite o código do produto que deseja comprar: ");
+    scanf("%d", &codigo);
+  }
+
+  return 0;
+}
+
+
+/*
+14- Faça um programa que controle o fluxo de voos nos aeroportos de um país. Com V = 5 (voos) 
+e A = 5 (aeroportos) e: 
+- Crie e leia um vetor de voos, sendo que cada voo  contém um código de aeroporto de 
+origem e um de destino; 
+- Crie um vetor de aeroportos, sendo que cada aeroporto contém seu código, quantidade 
+de voos que saem e quantidade de voos que chegam. 
+Nota:  Cada  aeroporto  é  identificado  por  um  código  inteiro  entre  0  e  (A-1).  Não  aceite 
+aeroportos de código inexistente
+*/
+
+#include <stdio.h>
+
+struct Voo
+{
+  int codigo_origem;
+  int codigo_destino;
+};
+
+struct Aeroporto
+{
+  int codigo;
+  int voos_saindo;
+  int voos_chegando;
+};
+
+int main()
+{
+  struct Voo voos[5];
+  for (int i = 0; i < 5; i++)
+  {
+    printf("Digite o código do aeroporto de origem do voo %d: ", i + 1);
+    scanf("%d", &voos[i].codigo_origem);
+    printf("Digite o código do aeroporto de destino do voo %d: ", i + 1);
+    scanf("%d", &voos[i].codigo_destino);
+    printf("\n");
+  }
+
+  struct Aeroporto aeroportos[5];
+  for (int i = 0; i < 5; i++)
+  {
+    printf("Digite o código do aeroporto %d: ", i + 1);
+    scanf("%d", &aeroportos[i].codigo);
+    aeroportos[i].voos_saindo = 0;
+    aeroportos[i].voos_chegando = 0;
+    printf("\n");
+  }
+
+  for (int i = 0; i < 5; i++)
+  {
+    for (int j = 0; j < 5; j++)
+    {
+      if (voos[i].codigo_origem == aeroportos[j].codigo)
+      {
+        aeroportos[j].voos_saindo++;
+      }
+      if (voos[i].codigo_destino == aeroportos[j].codigo)
+      {
+        aeroportos[j].voos_chegando++;
+      }
+    }
+  }
+
+  for (int i = 0; i < 5; i++)
+  {
+    printf("Aeroporto %d: %d voos saindo e %d voos chegando\n", aeroportos[i].codigo, aeroportos[i].voos_saindo, aeroportos[i].voos_chegando);
+  }
+
+  return 0;
+}
+
+
+/*
+15-Faça um programa para armazenar um livro de receitas e: 
+- Crie  um  vetor  de  5  receitas,  que  deve  ter  nome  (máximo  25  letras),  quantidade  de 
+ingredientes e ingredientes; 
+- Para cada receita, leia seu nome e a quantidade de ingredientes. Então crie e leia o vetor 
+de ingredientes, sendo que cada ingrediente contém nome e quantidade; 
+- Procure receita por nome, mostrando seus ingredientes se encontrar. Se não encontrar, 
+informe ao usuário. Repita o processo até digitar uma string vazia. 
+*/
+
+#include <stdio.h>
+#include <string.h>
+
+struct Ingrediente
+{
+  char nome[25];
+  int quantidade;
+};
+
+struct Receita
+{
+  char nome[25];
+  int quantidade_ingredientes;
+  struct Ingrediente ingredientes[5];
+};
+
+int main()
+{
+  struct Receita receitas[5];
+  for (int i = 0; i < 5; i++)
+  {
+    printf("Digite o nome da receita %d: ", i + 1);
+    setbuf(stdin, NULL);
+    fgets(receitas[i].nome, 25, stdin);    
+
+    printf("Digite a quantidade de ingredientes da receita %d: ", i + 1);
+    scanf("%d", &receitas[i].quantidade_ingredientes);
+
+    for (int j = 0; j < receitas[i].quantidade_ingredientes; j++)
+    {
+      printf("Digite o nome do ingrediente %d da receita %d: ", j + 1, i + 1);
+      setbuf(stdin, NULL);
+      fgets(receitas[i].ingredientes[j].nome, 25, stdin);      
+
+      printf("Digite a quantidade do ingrediente %d da receita %d: ", j + 1, i + 1);
+      scanf("%d", &receitas[i].ingredientes[j].quantidade);
+    }
+    printf("\n");
+  }
+
+  char nome[25];
+  printf("Digite o nome da receita que deseja procurar: ");
+  scanf("%s", nome);
+  while (nome[0] != '\0')
+  {
+    for (int i = 0; i < 5; i++)
+    {
+      if (strcmp(receitas[i].nome, nome) == 0)
+      {
+        printf("Ingredientes da receita %s: ", receitas[i].nome);
+        for (int j = 0; j < receitas[i].quantidade_ingredientes; j++)
+        {
+          printf("%s (%d), ", receitas[i].ingredientes[j].nome, receitas[i].ingredientes[j].quantidade);
+        }
+        printf("\n\n");
+      }
+    }
+    printf("Digite o nome da receita que deseja procurar: ");
+    scanf("%s", nome);
+  }
+
+  return 0;
+}
+
+
+/*
+16-Faça um programa que armazena filmes produzidos por vários diretores e: 
+- Crie  e  leia  um  vetor  de  5  diretores,  cada  um  contendo  nome  (máximo  20  letras), 
+quantidade de filmes e filmes. O membro filmes é um vetor, que deve ser criado após 
+ter lido quantidade de filmes. Cada filme é composto por nome, ano e duração; 
+- Procure um diretor por nome, mostrando todos os filmes que ele já produziu. Repita o 
+processo até digitar uma string vazia. 
+*/
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+struct Filme
+{
+  char nome[20];
+  int ano;
+  int duracao;
+};
+
+struct Diretor
+{
+  char nome[20];
+  int quantidade_filmes;
+  struct Filme *filmes;
+};
+
+int main()
+{
+  struct Diretor diretores[5];
+  for (int i = 0; i < 5; i++)
+  {
+    printf("Digite o nome do diretor %d: ", i + 1);
+    setbuf(stdin, NULL);
+    fgets(diretores[i].nome, 20, stdin);
+    
+    printf("Digite a quantidade de filmes do diretor %d: ", i + 1);
+    scanf("%d", &diretores[i].quantidade_filmes);
+    diretores[i].filmes = (struct Filme *)malloc(diretores[i].quantidade_filmes * sizeof(struct Filme));
+    
+    for (int j = 0; j < diretores[i].quantidade_filmes; j++)
+    {
+      printf("Digite o nome do filme %d do diretor %d: ", j + 1, i + 1);
+      setbuf(stdin, NULL);
+      fgets(diretores[i].filmes[j].nome, 20, stdin);
+
+      printf("Digite o ano do filme %d do diretor %d: ", j + 1, i + 1);
+      scanf("%d", &diretores[i].filmes[j].ano);
+
+      printf("Digite a duração do filme %d do diretor %d: ", j + 1, i + 1);
+      scanf("%d", &diretores[i].filmes[j].duracao);
+    }
+    printf("\n");
+  }
+
+  char nome[20];
+  printf("Digite o nome do diretor que deseja procurar: ");
+  setbuf(stdin, NULL);
+  fgets(nome, 20, stdin);
+    
+  while (nome[0] != '\0')
+  {
+    for (int i = 0; i < 5; i++)
+    {
+      if (strcmp(diretores[i].nome, nome) == 0)
+      {
+        printf("Filmes do diretor %s: ", diretores[i].nome);
+        for (int j = 0; j < diretores[i].quantidade_filmes; j++)
+        {
+          printf("%s (%d), ", diretores[i].filmes[j].nome, diretores[i].filmes[j].ano);
+        }
+        printf("\n\n");
+      }
+    }
+    printf("Digite o nome do diretor que deseja procurar: ");
+    scanf("%s", nome);
+  }
+}
+
+
+
+/*
+17-Definir a estrutura cuja representação gráfica é dada a seguir, definir os campos com os tipos 
+básicos necessários e implementar o que se pede.  
+O Cadastro é composto de: 
+Nome Endereço Salário 
+Identidade CPF Estado Civil 
+Telefone Idade Sexo 
+ 
+O Endereço é composto de: 
+Rua Bairro Cidade 
+Estado CEP  
+ 
+a) Crie um vetor Cadastro com 5 elementos; 
+b) Permita ao usuário entrar com dados para preencher esses 5 cadastros; 
+c) Encontre a pessoa com maior idade entre os cadastrados; 
+d) Encontre as pessoas do sexo masculino; 
+e) Encontre as pessoas com sal  ́ ario maior que 1000; 
+f) Imprima  os  dados  da  pessoa  cuja  identidade  seja  igual  a  um  valor  fornecido  pelo 
+usuário. 
+*/
+
+
+#include <stdio.h>
+
+struct Endereco
+{
+  char rua[100];
+  char bairro[100];
+  char cidade[100];
+  char estado[100];
+  char cep[100];
+};
+
+struct Cadastro
+{
+  char nome[100];
+  struct Endereco endereco;
+  float salario;
+  char identidade[100];
+  char cpf[100];
+  char estado_Civil[100];
+  char telefone[100];
+  int idade;
+  char sexo[100];
+};
+
+int main()
+{
+  struct Cadastro cadastros[5];
+  for (int i = 0; i < 5; i++)
+  {
+    printf("Digite o nome do cadastro %d: ", i + 1);
+    scanf("%s", cadastros[i].nome);
+    printf("Digite a rua do cadastro %d: ", i + 1);
+    scanf("%s", cadastros[i].endereco.rua);
+    printf("Digite o bairro do cadastro %d: ", i + 1);
+    scanf("%s", cadastros[i].endereco.bairro);
+    printf("Digite a cidade do cadastro %d: ", i + 1);
+    scanf("%s", cadastros[i].endereco.cidade);
+    printf("Digite o estado do cadastro %d: ", i + 1);
+    scanf("%s", cadastros[i].endereco.estado);
+    printf("Digite o cep do cadastro %d: ", i + 1);
+    scanf("%s", cadastros[i].endereco.cep);
+    printf("Digite o salario do cadastro %d: ", i + 1);
+    scanf("%f", &cadastros[i].salario);
+    printf("Digite a identidade do cadastro %d: ", i + 1);
+    scanf("%s", cadastros[i].identidade);
+    printf("Digite o cpf do cadastro %d: ", i + 1);
+    scanf("%s", cadastros[i].cpf);
+    printf("Digite o estado civil do cadastro %d: ", i + 1);
+    scanf("%s", cadastros[i].estado_Civil);
+    printf("Digite o telefone do cadastro %d: ", i + 1);
+    scanf("%s", cadastros[i].telefone);
+    printf("Digite a idade do cadastro %d: ", i + 1);
+    scanf("%d", &cadastros[i].idade);
+    printf("Digite o sexo do cadastro %d: ", i + 1);
+    scanf("%s", cadastros[i].sexo);
+    printf("\n");
+  }
+
+  int maior_Idade = 0, indice_Maior_Idade = 0;
+  for (int i = 0; i < 5; i++)
+  {
+    if (cadastros[i].idade > maior_Idade)
+    {
+      maior_Idade = cadastros[i].idade;
+      indice_Maior_Idade = i;
+    }
+  }
+  printf("Pessoa com maior idade: %s\n", cadastros[indice_Maior_Idade].nome);
+
+  printf("Pessoas do sexo masculino: ");
+  for (int i = 0; i < 5; i++)
+  {
+    if (cadastros[i].sexo[0] == 'm')
+    {
+      printf("%s ", cadastros[i].nome);
+    }
+  }
+
+  printf("\nPessoas com salario maior que 1000: ");
+  for (int i = 0; i < 5; i++)
+  {
+    if (cadastros[i].salario > 1000)
+    {
+      printf("%s ", cadastros[i].nome);
+    }
+  }
+
+  char identidade[100];
+
+  printf("\nDigite a identidade da pessoa que deseja encontrar: ");
+  setbuf(stdin, NULL);
+  fgets(identidade, 100, stdin);
+
+  for (int i = 0; i < 5; i++)
+  {
+    if (strcmp(cadastros[i].identidade, identidade) == 0)
+    {
+      printf("Nome: %s", cadastros[i].nome);
+      printf("Rua: %s", cadastros[i].endereco.rua);
+      printf("Bairro: %s", cadastros[i].endereco.bairro);
+      printf("Cidade: %s", cadastros[i].endereco.cidade);
+      printf("Estado: %s", cadastros[i].endereco.estado);
+      printf("Cep: %s", cadastros[i].endereco.cep);
+      printf("Salario: %f", cadastros[i].salario);
+      printf("Identidade: %s", cadastros[i].identidade);
+      printf("Cpf: %s", cadastros[i].cpf);
+      printf("Estado civil: %s", cadastros[i].estadoCivil);
+      printf("Telefone: %s", cadastros[i].telefone);
+      printf("Idade: %d", cadastros[i].idade);
+      printf("Sexo: %s", cadastros[i].sexo);
+    }
+  }
+
+  return 0;
+}
+
+
+/*
+18-Escreva um programa que receba dois structs do tipo “dma”, cada um representando uma 
+data válida, e calcule o número de dias que decorreram entre as duas datas. 
+ 
+struct dma { 
+    int dia; 
+    int mes; 
+    int ano; 
+}; 
+*/
+
+
+#include <stdio.h>
+
+struct dma
+{
+  int dia;
+  int mes;
+  int ano;
+};
+
+int main()
+{
+  struct dma data_1, data_2;
+  printf("Digite a primeira data (dd/mm/aaaa):\n");
+  scanf("%d/%d/%d", &data_1.dia, &data_1.mes, &data_1.ano);
+
+  printf("Digite a segunda data (dd/mm/aaaa):\n");
+  scanf("%d/%d/%d", &data_2.dia, &data_2.mes, &data_2.ano);
+
+  int dias_1 = data_1.dia + (data_1.mes * 30) + (data_1.ano * 365);
+  int dias_2 = data_2.dia + (data_2.mes * 30) + (data_2.ano * 365);
+
+  int dias = dias_2 - dias_1;
+
+  printf("Dias decorridos: %d\n", dias < 0 ? dias * -1 : dias);
+
+  return 0;
+}
