@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main()
+{
+    char frase[100];
+
+    printf("Digite uma frase:\n");
+    fgets(frase, 100, stdin);
+
+    int j = 0;
+    for (int i = 0; frase[i] != '\0'; i++) {
+        if (frase[i] == 'r' || frase[i] == 'R') 
+        {
+            if (frase[i + 1] != ' ' && frase[i + 1] != '\n' && frase[i + 1] != 'r' && frase[i + 1] != 'R')
+                if (frase[i] == 'r') 
+                    frase[i]='l';
+                else 
+                    frase[i]='L';
+        
+            else if (frase[i + 1] == ' ' || frase[i+ 1] == '\n') 
+                frase[i] = frase[i];
+            else if (frase[i + 1] == 'r' || frase[i + 1] == 'R') 
+            {
+                if (frase[i + 1] == 'r') 
+                    frase[i]='l';
+                else if (frase [i +1] == 'R')
+                    frase[i]='L';
+                for (j=i; frase[j] != '\0'; j++) 
+                {
+                frase[j+ 1] = frase[j + 2];
+                }
+            }
+        }
+    }
+    
+
+    printf("Frase modificada: %s\n", frase);
+
+    return 0;
+}
