@@ -1,0 +1,335 @@
+/*1 Determine o valor especificado em cada item abaixo considerando que foi
+executado as seguintes instruções (assuma que o endereço de x é 1000 e
+de y é 1004):
+int x = 10, y=20;
+int* p1;
+int* p2;
+p1 = &x;
+p2 = &y;
+(p1)++;
+(a) x
+(b) y
+(c) &x
+(d) &y
+(e) p1
+(f) p2
+(g) *p1 + *p2
+(h) *(&x)
+(i) &(*p2)
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(){
+    int x = 10, y=20;
+    int* p1;
+    int* p2;
+
+    p1 = &x;
+    p2 = &y;
+    (p1)++;
+
+    printf("A: %d \n", x);
+    printf("B: %d \n", y);
+    printf("C: %p \n", &x);
+    printf("D: %p \n", &y);
+    printf("E: %d \n", p1);
+    printf("F: %d \n", p2);
+    printf("G: %d \n", *p1 + *p2);
+    printf("H: %d \n", *(&x));
+    printf("I: %p \n", &(*p2));
+     
+    return 0; 
+}
+
+/* 
+2 Escreva um programa que declare um inteiro, um real e um char, e
+ponteiros para inteiro, real e char. Associe as variáveis aos ponteiros (use
+&). Modifique os valores de cada variável usando os ponteiros. Imprima os
+valores das variáveis antes e após a modificação.
+*/
+
+#include <stdio.h>
+
+void main()
+{
+  int a = 0, *pa;
+  float b = 1.1, *pb;
+  char c = 'a', *pc;
+
+  pa = &a;
+  pb = &b;
+  pc = &c;
+
+  printf("a = %d, b = %f, c = %c\n", a, b, c);
+
+  *pa = 1;
+  *pb = 2.2;
+  *pc = 'b';
+
+  printf("a = %d, b = %f, c = %c\n", a, b, c);
+}
+
+
+
+/*
+3 Escreva um programa que contenha duas variáveis inteiras. Compare seus
+endereços e exiba o maior endereço.
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(){
+    int x, y;
+
+    //Declarando Ponteiros 
+    int* p1;
+    int *p2; 
+
+    p1 = &x; 
+    p2 = &y; 
+
+    if(p1>p2){
+        printf("O endereco de x eh maior, sendo ele: %p \n", &x);
+    } else if (p2<p1){
+        printf("O endereco de y eh maior, sendo ele: %p \n", &y);
+    }
+
+    
+    return 0;
+}
+/*
+4 Escreva um programa que contenha duas variáveis inteiras. Leia essas
+variáveis do teclado. Em seguida, compare seus endereços e exiba o
+conteúdo do maior endereço.
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(){
+    //Declarando variáveis
+    int x, y;
+
+    //Lendo variáveis do teclado
+    printf("Informe o valor de x: ");
+    scanf("%d", &x);
+    printf("Informe o valor de y: "); 
+    scanf("%d", &y); 
+
+    //Declarando Ponteiros 
+    int* p1;
+    int *p2; 
+
+    //Apontando os ponteiros para as variáveis declaradas 
+    p1 = &x; 
+    p2 = &y; 
+
+    //Comparando o maior endereço de memória e imprimindo ele 
+    if(p1>p2){
+        printf("O endereco de %d eh maior, sendo ele: %p \n", x, &x);
+    } else if (p2<p1){
+        printf("O endereco de %d eh maior, sendo ele: %p \n", y, &y);
+    }
+ 
+    return 0;
+}
+
+/*
+5 Faça um programa que leia dois variáveis do tipo inteiro (A e B) e duas do
+tipo ponteiro de inteiro apontando para essas variáveis. Utilizando ponteiros,
+o programa deve retornar a soma do dobro dos dois números lidos. O dobro
+de A na própria variável A e o dobro de B na própria variável B.
+*/
+
+#include <stdio.h>
+
+int somarDobro(int *a, int *b);
+
+void main()
+{
+  int a, b;
+
+  scanf("%d %d", &a, &b);
+
+  int dobro = somarDobro(&a, &b);
+
+  printf("%d\n", dobro);
+}
+
+int somarDobro(int *a, int*b) {
+  *a = 2 * *a;
+  *b = 2 * *b;
+
+  return *a + *b;
+}
+
+/*
+6 Escreva um programa que declare duas variáveis do tipo inteiro e duas do
+tipo ponteiro de inteiro apontando para essas variáveis. Utilizando ponteiros,
+o programa deve ler dois números para essas variáveis e os imprimir,
+realizando as quatro operações básicas de matemática com esses números.
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() 
+{
+    int A, B;
+    int *p, *q;
+    int op;
+        
+            
+    do 
+    {
+        printf("ADICAO        (OPCAO 1)\n");
+        printf("SUBTRACAO     (OPCAO 2)\n");
+        printf("MULTIPLICACAO (OPCAO 3)\n");
+        printf("DIVISAO       (OPCAO 4)\n");
+        printf("SAIDA         (OPCAO 5)\n\n");
+    
+        printf("Digite uma opcao: ");
+        scanf("%d", &op);
+        printf("\n");
+        
+        if((op >= 1) && (op < 5))
+        {
+            printf("Digite um valor inteiro qualquer para A: ");
+            scanf("%d", &A);
+    
+            printf("Digite um valor inteiro qualquer para B: ");
+            scanf("%d", &B);
+            
+            p = &A;
+            q = &B;
+        }
+        
+        switch(op)
+        {
+            case 1:
+            printf("Soma: %d\n\n", *p + *q);
+            break;
+            
+            case 2:
+            printf("Subtracao: %d\n\n", *p - *q);
+            break;
+            
+            case 3:
+            printf("Multiplicacao: %d\n\n", *p * *q);
+            break;
+            
+            case 4:
+            if(*q == 0)
+            {
+                printf("Nao existe divisao por zero!\n\n");
+                printf("Digite outro valor: ");
+                scanf("%d", &*q);
+            }
+            printf("Divisao: %d\n\n", *p / *q);
+            break;
+            
+            case 5:
+            printf("Saindo\n\n");
+            break;
+            exit(1);
+        }
+    }while(op != 5);
+    
+    return 0;
+}
+
+/*
+7 Faça um programa que declare três variáveis do tipo inteiro e três do tipo
+ponteiro de inteiro apontando para essas variáveis. Utilizando ponteiros, leia
+três números e os imprima em ordem crescente. O programa deve
+apresentar também o endereço de memória desses números.
+*/
+
+#include <stdio.h>
+
+void ordenarNumeros(int* num1, int* num2, int* num3);
+int main() 
+{
+    int num1, num2, num3;
+    int* ptr1, *ptr2, *ptr3;
+
+    printf("Digite o primeiro numero: ");
+    scanf("%d", &num1);
+
+    printf("Digite o segundo numero: ");
+    scanf("%d", &num2);
+
+    printf("Digite o terceiro numero: ");
+    scanf("%d", &num3);
+
+    ptr1 = &num1;
+    ptr2 = &num2;
+    ptr3 = &num3;
+
+    ordenarNumeros(ptr1, ptr2, ptr3);
+
+    printf("\nNumeros em ordem crescente: %d, %d, %d\n", *ptr1, *ptr2, *ptr3);
+    printf("Enderecos de memoria dos numeros: %p, %p, %p\n", ptr1, ptr2, ptr3);
+
+    return 0;
+}
+
+void ordenarNumeros(int* num1, int* num2, int* num3) 
+{
+    int temp;
+
+    if (*num1 > *num2) 
+    {
+        temp = *num1;
+        *num1 = *num2;
+        *num2 = temp;
+    }
+
+    if (*num2 > *num3) 
+    {
+        temp = *num2;
+        *num2 = *num3;
+        *num3 = temp;
+    }
+
+    if (*num1 > *num2) 
+    {
+        temp = *num1;
+        *num1 = *num2;
+        *num2 = temp;
+    }
+}
+
+/*
+8 Faça um programa que leia seis números e armazene-os em um vetor.
+Utilizando aritmética de ponteiro, imprima os valores do vetor. O programa
+deve apresentar também o endereço de memória desses números.
+*/
+
+#include <stdio.h>
+
+int main() 
+{
+    int num[6]; //Vetor para armazenar os números
+    int *p;  //Ponteiro para percorrer o vetor
+    int i;
+    
+    for(i = 0; i < 6; i++)// Lendo os números e armazenando no vetor
+    {
+        printf("Digite o %dº numero inteiro qualquer: ", i+1);
+        scanf("%d", &num[i]);
+    }
+    
+    printf("\nValores do vetor e seus endereços de memoria:\n");
+    
+    for(p = num; p < (num + 6); p++) // Imprimindo os valores e endereços de memória utilizando ponteiros
+    {
+        printf("Valor: %d\nEndereço: %p\n", *p, p);
+    }
+    
+    return 0;
+}
+
